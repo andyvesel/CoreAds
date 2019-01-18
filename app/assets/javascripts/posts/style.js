@@ -28,23 +28,32 @@ $(document).on('turbolinks:load', function() {
 });
 
 var colorSet = randomColorSet();
-var mode = Math.floor(Math.random() * 2);
+//var mode = Math.floor(Math.random() * 2);
+var mode = 1;
 
 // Randomly returns a color scheme
 function randomColorSet() {
     var colorSet1 = ['#45CCFF', '#49E83E', '#FFD432', '#E84B30', '#B243FF'];
     var colorSet2 = ['#FF6138', '#FFFF9D', '#BEEB9F', '#79BD8F', '#79BD8F'];
     var colorSet3 = ['#FCFFF5', '#D1DBBD', '#91AA9D', '#3E606F', '#193441'];
-    var colorSet4 = ['#004358', '#1F8A70', '#BEDB39', '#FFE11A', '#FD7400'];
-    var colorSet5 = ['#105B63', '#FFFAD5', '#FFD34E', '#DB9E36', '#BD4932'];
-    var colorSet6 = ['#04BFBF', '#CAFCD8', '#F7E967', '#A9CF54', '#588F27'];
-    var colorSet7 = ['#405952', '#9C9B7A', '#FFD393', '#FF974F', '#F54F29'];
-    var randomSet = [colorSet1, colorSet2, colorSet3, colorSet4, colorSet5, colorSet6, colorSet7];
-    return randomSet[Math.floor(Math.random() * randomSet.length )];
+   // var colorSet4 = ['#004358', '#1F8A70', '#BEDB39', '#FFE11A', '#FD7400'];
+   // var colorSet5 = ['#105B63', '#FFFAD5', '#FFD34E', '#DB9E36', '#BD4932'];
+   // var colorSet6 = ['#04BFBF', '#CAFCD8', '#F7E967', '#A9CF54', '#588F27'];
+   // var colorSet7 = ['#405952', '#9C9B7A', '#FFD393', '#FF974F', '#F54F29'];
+   // var randomSet = [colorSet1, colorSet2, colorSet3, colorSet4, colorSet5, colorSet6, colorSet7];
+    //set_number = Math.floor(Math.random() * randomSet.length );
+    // console.log('randomColorSet'+set_number);
+    // return randomSet[set_number];
+    //return randomSet[Math.floor(Math.random() * randomSet.length )];
+    return colorSet2;
 }
 
 // Randomly returns a color from an array of colors
 function randomColor() {
-    var color = colorSet[Math.floor(Math.random() * colorSet.length)];
+    console.log('colorSet ' + colorSet.length);
+    set_number = Math.floor(Math.random() * colorSet.length);
+    console.log('randomColor'+set_number);
+    var color = colorSet[set_number];
+    //var color = colorSet[3];
     return color;
 }
