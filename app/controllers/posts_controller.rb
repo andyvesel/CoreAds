@@ -42,4 +42,9 @@ class PostsController < ApplicationController
       else
       end
     end
+    
+    respond_to do |format|
+      format.html
+      format.js { render partial: 'posts/posts_pagination_page' }
+    end
 end
