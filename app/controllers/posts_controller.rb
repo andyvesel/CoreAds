@@ -38,6 +38,10 @@ class PostsController < ApplicationController
         end
       end
       
+    if user_signed_in?
+      @message_has_been_sent = conversation_exist?
+    end      
+      
     private
 
     def posts_for_branch(branch)
@@ -61,6 +65,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
       format.js { render partial: 'posts/posts_pagination_page' }
+    end
+    
+    def conversation_exist?
+      Private::Conversation.between_users(current_user.id, @post.user.id).present?
     end
      
 end
