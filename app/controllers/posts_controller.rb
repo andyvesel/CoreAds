@@ -22,27 +22,8 @@ class PostsController < ApplicationController
         posts_for_branch(params[:action])
       end
       
-      private
-
-    def posts_for_branch(branch)
-      @categories = Category.where(branch: branch)
-      @posts = get_posts.paginate(page: params[:page])
-    end
-    
-    def get_posts
-        PostsForBranchService.new({
-          search: params[:search],
-          category: params[:category],
-          branch: params[:action]
-        }).call
-      end
-    
-    respond_to do |format|
-      format.html
-      format.js { render partial: 'posts/posts_pagination_page' }
-    end
-    
-    def new
+      
+      def new
         @branch = params[:branch]
         @categories = Category.where(branch: @branch)
         @post = Post.new
@@ -57,8 +38,29 @@ class PostsController < ApplicationController
         end
       end
       
-      def post_params
-          params.require(:post).permit(:content, :title, :category_id)
-                               .merge(user_id: current_user.id)
-        end
+    private
+
+    def posts_for_branch(branch)
+      @categories = Category.where(branch: branch)
+      @posts = get_posts.paginate(page: params[:page])
+    end
+    
+    def post_params
+      params.require(:post).permit(:content, :title, :category_id)
+                           .merge(user_id: current_user.id)
+    end
+    
+    def get_posts
+        PostsForBranchService.new({
+          search: params[:search],
+          category: params[:category],
+          branch: params[:action]
+        }).call
+      end
+    
+    respond_to do |format|
+      format.html
+      format.js { render partial: 'posts/posts_pagination_page' }
+    end
+     
 end

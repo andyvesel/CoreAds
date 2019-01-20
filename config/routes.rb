@@ -12,6 +12,11 @@ Rails.application.routes.draw do
         get 'signup', to: 'devise/registrations#new'
     end
     
+    devise_scope :user do 
+        root to: 'pages#index'
+        match '/sessions/user', to: 'devise/sessions#create', via: :post
+      end
+    
     resources :posts do
       collection do
         get 'hobby'
