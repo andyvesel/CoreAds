@@ -39,7 +39,7 @@ App.private_conversation = App.cable.subscriptions.create("Private::Conversation
             var height = messages_list[0].scrollHeight;
             messages_list.scrollTop(height);
         }
-    }
+    },
     
     send_message: function(message) {
         return this.perform('send_message', {

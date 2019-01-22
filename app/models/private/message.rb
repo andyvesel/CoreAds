@@ -14,5 +14,6 @@ class Private::Message < ApplicationRecord
       previous_message_index = self.conversation.messages.index(self) - 1
       self.conversation.messages[previous_message_index]
     end             
+        
              
 end

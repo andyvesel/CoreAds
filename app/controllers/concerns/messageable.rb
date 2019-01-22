@@ -1,8 +1,9 @@
 require 'active_support/concern'
 
-module Messages
+module Messageable
+    
   extend ActiveSupport::Concern
-
+     
   def get_messages(conversation_type, messages_amount)
     # convert a string into a constant, so the models can be called dynamically
     model = "#{conversation_type.capitalize}::Conversation".constantize
@@ -22,4 +23,6 @@ module Messages
     end
   end
 
+  
+  
 end

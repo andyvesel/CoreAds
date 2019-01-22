@@ -1,5 +1,6 @@
 class Private::MessagesController < ActionController::Base
-  include Messages
+  
+  include Messageable
 
   def index
     get_messages('private', 10)
@@ -9,4 +10,6 @@ class Private::MessagesController < ActionController::Base
       format.js { render partial: 'private/messages/load_more_messages' }
     end
   end
+         
+   
 end
