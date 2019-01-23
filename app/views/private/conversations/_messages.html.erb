@@ -1,9 +1,11 @@
 <% previous_message = nil %>
+
 <% @messages.reverse.each do |message| %>
-  <%= render  partial: 'messages/_message', 
-              locals: { user: message.user, 
-                        conversation_id: @conversation.id,
-                        message: message, 
-                        previous_message: previous_message } %>
-  <% previous_message = message %>
+	<% if message.body != 'INITIAL_MESSAGE_FOR_SORTING' %>
+	  <%= render 'private/messages/message', 
+	  						user: @user,
+	  						message: message,
+	  						previous_message: previous_message %>
+	  <% previous_message = message %>
+  <% end %>
 <% end %>

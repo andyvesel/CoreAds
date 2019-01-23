@@ -1,6 +1,8 @@
+
 var conversation = $('body').find("[data-pconversation-id='" + 
                                 "<%= @conversation.id %>" + 
                                 "']");
+                                                           
 var chat_windows_count = $('.conversation-window').length + 1;
 
 if (conversation.length !== 1) {
